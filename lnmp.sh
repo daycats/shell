@@ -32,6 +32,7 @@ mkdir /data/wwwroot -p && mkdir /data/session
 chown www.www /data/wwwroot /data/session
 
 # 用www用户和www用户组启动服务
+sed -i "2s/^.*/user www www;/" /etc/nginx/nginx.conf
 sed -i "s/user = apache/user = www/g" /etc/php-fpm.d/www.conf
 sed -i "s/group = apache/group = www/g" /etc/php-fpm.d/www.conf
 sed -i "s/\/var\/lib\/php\/session/\/data\/session/g" /etc/php-fpm.d/www.conf
